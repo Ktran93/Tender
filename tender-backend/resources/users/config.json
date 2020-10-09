@@ -1,0 +1,29 @@
+{
+	"type": "UserCollection",
+	"properties": {
+		"displayName": {
+			"name": "displayName",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "displayName",
+			"order": 0
+		},
+		"following": {
+			"name": "following",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "following",
+			"order": 1
+		},
+		"profilePicture": {
+			"name": "profilePicture",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "profilePicture",
+			"order": 2
+		}
+	}
+}

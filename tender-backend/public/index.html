@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Home</title>
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Our Custom CSS -->
+  <link rel="stylesheet" href="stylesheets/index-style.css">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+  <script src="/dpd.js" type="text/javascript"></script>
+  <!-- Verify that user is logged in, otherwise redirect to welcome page. -->
+  <script type="text/javascript">
+    dpd.users.me(function(user) {
+      if (!user) location.href = "welcome.html";
+    });
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <img class="profilepic" id="welcome-user-pic" src="">
+        <h2 id="welcome-msg"></h1>
+      </div>
+      <div id="friendList-header">
+        <div id="friendList-Title">
+          <h3> My Follow List</h3>
+        </div>
+        <ul id="friendList" data-friends-list="list" class="list-unstyled components">
+          <!--<p>Friends List</p>-->
+        </ul>
+      </div>
+
+      <ul class="list-unstyled CTAs">
+        <h3>Follow People</h3>
+        <form follow-user-form="form" id="follow-user" role="form" style="display: block;">
+          <div class="form-group">
+            <input type="text" name="emailAddress" id="user-email" tabindex="1" class="form-control"
+                   placeholder="Email" value="" autofocus required>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="submit" name="follow-user-submit" id="follow-user-submit" tabindex="4"
+                       class="form-control btn btn-login" value="Follow">
+              </div>
+            </div>
+          </div>
+        </form>
+      </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Follow List</span>
+                            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div>
+        <button type="button" id="postButton" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create New Post</button>
+      </div>
+      <!-- Post  -->
+      <div hidden class="detailBox">
+        <div class="titleBox">
+          <label>Posted At Some Time by Location</label>
+          <button type="button" class="close" aria-hidden="true">&times;</button>
+        </div>
+        <div class="commentBox">
+          <img src="" id="my_image" alt="">
+        </div>
+        <div class="commentBox">
+          <p id="my_description" class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        <div class="actionBox">
+          <ul comment-list="list" id="commentList_NONE" class="commentList">
+            <li>
+              <div class="commenterImage">
+                <img src="http://placekitten.com/50/50" />
+              </div>
+              <div class="commentText">
+                <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+
+              </div>
+            </li>
+            <li>
+              <div class="commenterImage">
+                <img src="http://placekitten.com/45/45" />
+              </div>
+              <div class="commentText">
+                <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
+
+              </div>
+            </li>
+            <li>
+              <div class="commenterImage">
+                <img src="http://placekitten.com/40/40" />
+              </div>
+              <div class="commentText">
+                <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+
+              </div>
+            </li>
+          </ul>
+          <form comment-form="form" id="comment-form" class="form-inline" role="form">
+            <div class="form-group">
+              <input id="comment-text" class="form-control" type="text" placeholder="Your comments" />
+            </div>
+            <div class="form-group">
+              <input type=submit class="btn btn-default">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div hidden class="line"></div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Create Post</h4>
+          </div>
+          <div class="modal-body">
+            <form create-post-form="form" id="create-post-form" class="form-inline" role="form">
+              <input name="description" type="text" id="foodMessage">
+              <p>Description.</p>
+              <input type="file" id="foodPicture" name="pic" accept="image/*">
+              <input id="submitButton" type="submit" value="SUBMIT" class="btn btn-primary" />
+              <p id="submitError" style="color: red" hidden>* A picture is required</p>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Modal to display when an error is encountered. Use this modal when you need to display any sort
+     of error message to the user! -->
+    <div class="modal fade" id="alert-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="alert-modal-title">Title text here</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <!-- Modal body -->
+          <div class="alert-modal-body">Body text here</div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <!-- Bootstrap Js CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="scripts/formhandler.js" charset="utf-8"></script>
+  <!-- <script src="scripts/friends.js" charset="utf-8"></script> -->
+  <!-- <script src="scripts/foods.js" charset="utf-8"></script> -->
+  <script src="scripts/comments.js" charset="utf-8"></script>
+  <script src="scripts/createPost.js" charset="utf-8"></script>
+  <script src="scripts/friends.js" charset="utf-8"></script>
+  <script src="scripts/validation.js" charset="utf-8"></script>
+  <script src="scripts/main.js" charset="utf-8"></script>
+</body>
+
+</html>

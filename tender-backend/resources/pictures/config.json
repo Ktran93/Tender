@@ -1,0 +1,37 @@
+{
+	"type": "Collection",
+	"properties": {
+		"email": {
+			"name": "email",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "email",
+			"order": 0
+		},
+		"file": {
+			"name": "file",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "file",
+			"order": 1
+		},
+		"message": {
+			"name": "message",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "message",
+			"order": 2
+		},
+		"comments": {
+			"name": "comments",
+			"type": "array",
+			"typeLabel": "array",
+			"required": false,
+			"id": "comments",
+			"order": 3
+		}
+	}
+}
